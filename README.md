@@ -1,4 +1,4 @@
-<img src="https://unascribed.com/f/a231ace4_trumpet.png" align="right" width="180px"/>
+<img src="logo.png" align="right" width="180px"/>
 
 # TP+
 A small, simple convenience mod that adds a /tpp command to teleport players between dimensions!
