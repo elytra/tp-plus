@@ -2,9 +2,9 @@
 
 ext {
 	group = 'com.elytradev'
-	projectName = 'Skeleton'
+	projectName = 'TP+'
 
-	useElytraVersionFormat = true
+	useElytraVersionFormat = false
 	version = '1'
 
 	concreteVersion = '0.3.4-SNAPSHOT'

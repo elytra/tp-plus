@@ -1,8 +1,9 @@
 <img src="https://unascribed.com/f/a231ace4_trumpet.png" align="right" width="180px"/>
 
-# Elytra Project Skeleton
+# TP+
+Teleportation command borrowed from RFTools 
 
-[>> Downloads <<](https://github.com/elytra/Skeleton/releases)
+[>> Downloads <<](https://github.com/elytra/tp-plus/releases)
 
 *Spooky scary skeletons*
 
