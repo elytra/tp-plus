@@ -3,14 +3,12 @@ package com.elytradev.tpp;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.CommandTP;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
 import java.util.Arrays;
@@ -33,6 +31,7 @@ public class CommandTPP extends CommandTP {
             target = (EntityPlayer) sender.getCommandSenderEntity();
             if(target==null){
                 ITextComponent component = new TextComponentString(TextFormatting.RED + "/tpp cannot be run from the server!");
+                sender.sendMessage(component);
             }
             dimensionid = parseInt(args[0]);
             x = parseDouble(args[1]);
@@ -43,6 +42,7 @@ public class CommandTPP extends CommandTP {
             target = server.getPlayerList().getPlayerByUsername(args[0]);
             if(target==null){
                 ITextComponent component = new TextComponentString(TextFormatting.RED + "player not found");
+                sender.sendMessage(component);
             }
             dimensionid = parseInt(args[1]);
             x = parseDouble(args[2]);
