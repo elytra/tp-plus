@@ -3,7 +3,7 @@
 # TP+
 A small, simple convenience mod that adds a /tpp command to teleport players between dimensions!
 
-##Syntax:
+Syntax:
 `/tpp [<player>] <dimension> <x> <y> <z>`
 
 [>> Downloads <<](https://github.com/elytra/tp-plus/releases)
