@@ -5,6 +5,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
+// copied essentially verbatim from RFTools
+
 public class RfToolsTeleporter extends Teleporter {
     private final WorldServer worldServerInstance;
 
