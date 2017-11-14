@@ -1,11 +1,12 @@
 <img src="https://unascribed.com/f/a231ace4_trumpet.png" align="right" width="180px"/>
 
 # TP+
-Teleportation command borrowed from RFTools 
+A small, simple convenience mod that adds a /tpp command to teleport players between dimensions!
+
+##Syntax:
+`/tpp [<player>] <dimension> <x> <y> <z>`
 
 [>> Downloads <<](https://github.com/elytra/tp-plus/releases)
-
-*Spooky scary skeletons*
 
 **This mod is open source and under a permissive license.** All Elytra mods are,
 and as such, can be included in any modpack on any platform without prior
