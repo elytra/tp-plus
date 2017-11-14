@@ -5,7 +5,7 @@ ext {
 	projectName = 'TP+'
 
 	useElytraVersionFormat = false
-	version = '1'
+	version = '1.12.2-1.0.0.0'
 
 	concreteVersion = '0.3.4-SNAPSHOT'
 	concreteModules = [ 'common' ]
