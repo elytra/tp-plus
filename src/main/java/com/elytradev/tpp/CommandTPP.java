@@ -11,8 +11,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.WorldServer;
 
-import java.util.Arrays;
-
 public class CommandTPP extends CommandTP {
     @Override
     public String getName()
