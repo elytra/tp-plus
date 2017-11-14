@@ -1,17 +1,21 @@
 package com.elytradev.tpp;
 
-import net.minecraft.command.CommandException;
-import net.minecraft.command.CommandTP;
-import net.minecraft.command.ICommandSender;
+import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.WorldServer;
 
-public class CommandTPP extends CommandTP {
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CommandTPP extends CommandBase {
     @Override
     public String getName()
     {
@@ -37,7 +41,12 @@ public class CommandTPP extends CommandTP {
             z = parseDouble(args[3]);
         }
         else if(args.length == 5){
-            target = server.getPlayerList().getPlayerByUsername(args[0]);
+            if(EntitySelector.isSelector(args[0])){
+                target = EntitySelector.matchOnePlayer(sender,args[0]);
+            }
+            else{
+                target = server.getPlayerList().getPlayerByUsername(args[0]);
+            }
             if(target==null){
                 ITextComponent component = new TextComponentString(TextFormatting.RED + "player not found");
                 sender.sendMessage(component);
@@ -50,7 +59,19 @@ public class CommandTPP extends CommandTP {
         else{
             return;
         }
-        teleportToDimension(target, dimensionid, x,y,z);
+
+        if(dimensionid == target.dimension){
+            List<String> newArgs = new ArrayList<String>(){};
+            newArgs.add(target.getName());
+            newArgs.add(Double.toString(x));
+            newArgs.add(Double.toString(y));
+            newArgs.add(Double.toString(z));
+
+            server.commandManager.executeCommand(sender, "tp " + String.join(" ", newArgs));
+        }
+        else{
+            teleportToDimension(target, dimensionid, x,y,z);
+        }
     }
 
     public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z) {
@@ -69,5 +90,26 @@ public class CommandTPP extends CommandTP {
             worldServer.spawnEntity(player);
             worldServer.updateEntityWithOptionalForce(player, false);
         }
+    }
+
+    public String getUsage(ICommandSender sender)
+    {
+        return TPPlus.modId + "commands.tpp.usage";
+    }
+
+    /**
+     * Get a list of options for when the user presses the TAB key
+     */
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos)
+    {
+        return args.length != 1 ? Collections.emptyList() : getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
+    }
+
+    /**
+     * Return whether the specified command parameter index is a username parameter.
+     */
+    public boolean isUsernameIndex(String[] args, int index)
+    {
+        return index == 0;
     }
 }
