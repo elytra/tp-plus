@@ -112,4 +112,9 @@ public class CommandTPP extends CommandBase {
     {
         return index == 0;
     }
+
+    public int getRequiredPermissionLevel()
+    {
+        return 2;
+    }
 }
