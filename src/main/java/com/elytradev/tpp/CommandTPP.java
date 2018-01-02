@@ -1,6 +1,7 @@
 package com.elytradev.tpp;
 
 import net.minecraft.command.*;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
@@ -29,7 +30,53 @@ public class CommandTPP extends CommandBase {
         EntityPlayer target;
         double x,y,z;
 
-        if(args.length == 4) {
+        if(args.length == 1) {
+            Entity destination;
+            target = (EntityPlayer) sender.getCommandSenderEntity();
+            if(EntitySelector.isSelector(args[0])){
+                destination = EntitySelector.matchOneEntity(sender,args[0],Entity.class);
+            }
+            else{
+                destination = server.getPlayerList().getPlayerByUsername(args[0]);
+            }
+            if(destination==null){
+                ITextComponent component = new TextComponentString(TextFormatting.RED + "entity not found: " + args[0]);
+                sender.sendMessage(component);
+            }
+            dimensionid = destination.dimension;
+            x = destination.posX;
+            y = destination.posY;
+            z = destination.posZ;
+        }
+        else if(args.length == 2) {
+            Entity destination;
+            if(EntitySelector.isSelector(args[0])){
+                target = EntitySelector.matchOnePlayer(sender,args[0]);
+            }
+            else{
+                target = server.getPlayerList().getPlayerByUsername(args[0]);
+            }
+            if(target==null){
+                ITextComponent component = new TextComponentString(TextFormatting.RED + "player not found: " + args[0]);
+                sender.sendMessage(component);
+            }
+
+            if(EntitySelector.isSelector(args[0])){
+                destination = EntitySelector.matchOneEntity(sender,args[0],Entity.class);
+            }
+            else{
+                destination = server.getPlayerList().getPlayerByUsername(args[0]);
+            }
+            if(destination==null){
+                ITextComponent component = new TextComponentString(TextFormatting.RED + "entity not found: " + args[0]);
+                sender.sendMessage(component);
+            }
+            dimensionid = destination.dimension;
+            x = destination.posX;
+            y = destination.posY;
+            z = destination.posZ;
+        }
+        else if(args.length == 4) {
             target = (EntityPlayer) sender.getCommandSenderEntity();
             if(target==null){
                 ITextComponent component = new TextComponentString(TextFormatting.RED + "/tpp cannot be run from the server!");
@@ -48,7 +95,7 @@ public class CommandTPP extends CommandBase {
                 target = server.getPlayerList().getPlayerByUsername(args[0]);
             }
             if(target==null){
-                ITextComponent component = new TextComponentString(TextFormatting.RED + "player not found");
+                ITextComponent component = new TextComponentString(TextFormatting.RED + "player not found: " + args[0]);
                 sender.sendMessage(component);
             }
             dimensionid = parseInt(args[1]);
