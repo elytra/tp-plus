@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 public class TPPlus {
     static final String modId = "tpp";
     static final String name = "TP+";
-    static final String version = "1.0.1.0";
+    static final String version = "1.0.1.1";
 
     //@Mod.Instance(modId)
     //public static TPPlus instance;
