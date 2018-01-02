@@ -5,6 +5,7 @@ A small, simple convenience mod that adds a /tpp command to teleport players bet
 
 Syntax:
 `/tpp [<player>] <dimension> <x> <y> <z>`
+
 `/tpp [<player>] <player>  (1.0.1.0+)`
 
 [>> Downloads <<](https://github.com/elytra/tp-plus/releases)
