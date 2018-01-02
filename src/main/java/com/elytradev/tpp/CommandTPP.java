@@ -62,10 +62,10 @@ public class CommandTPP extends CommandBase {
             }
 
             if(EntitySelector.isSelector(args[0])){
-                destination = EntitySelector.matchOneEntity(sender,args[0],Entity.class);
+                destination = EntitySelector.matchOneEntity(sender,args[1],Entity.class);
             }
             else{
-                destination = server.getPlayerList().getPlayerByUsername(args[0]);
+                destination = server.getPlayerList().getPlayerByUsername(args[1]);
             }
             if(destination==null){
                 ITextComponent component = new TextComponentString(TextFormatting.RED + "entity not found: " + args[0]);
@@ -141,7 +141,7 @@ public class CommandTPP extends CommandBase {
 
     public String getUsage(ICommandSender sender)
     {
-        return TPPlus.modId + "commands.tpp.usage";
+        return TPPlus.modId + ".commands.tpp.usage";
     }
 
     /**
