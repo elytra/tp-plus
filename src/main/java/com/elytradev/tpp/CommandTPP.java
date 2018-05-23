@@ -24,7 +24,19 @@ public class CommandTPP extends CommandBase {
     }
 
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException{
-        if(args.length < 1){return;}
+        if(args.length == 0) {
+           ITextComponent component = new TextComponentString("/tpp [<player>] <dimension> <x> <y> <z> | /tpp list");
+           sender.sendMessage(component);
+           return;
+       }
+       if(args[0].equals("list")) {
+           for(int i: DimensionManager.getStaticDimensionIDs()) {
+               String name = DimensionManager.getProviderType(i).getName();
+               ITextComponent component = new TextComponentString(Integer.toString(i)+": "+name);
+               sender.sendMessage(component);
+           }
+           return;
+       }
 
         int dimensionid;
         EntityPlayer target;
