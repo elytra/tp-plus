@@ -9,6 +9,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
